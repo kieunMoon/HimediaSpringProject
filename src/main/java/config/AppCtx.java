@@ -48,7 +48,6 @@ public class AppCtx {
 		infoPrinter.setMemberPrinter(memberPrinter());
 		infoPrinter.setMemberDao(memberDao());
 		return infoPrinter;
-		
 	}
 	
 	

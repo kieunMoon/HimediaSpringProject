@@ -9,6 +9,7 @@ import assembler.Assembler;
 import config.AppCtx;
 import spring.ChangePasswordService;
 import spring.DuplicateMemberException;
+import spring.MemberInfoPrinter;
 import spring.MemberListPrinter;
 import spring.MemberNotFoundException;
 import spring.MemberRequestSevice;
@@ -41,9 +42,23 @@ public class MainForSpring {
 				continue;
 			} else if (command.startsWith("list")) {
 				processListCommand();
+			} else if (command.startsWith("info")) {
+				processInfoCommand(command.split(" "));
+				continue;
 			}
 			printHelp();
 		}
+	}
+
+	private static void processInfoCommand(String[] args) {
+		if (args.length != 2) {
+			printHelp();
+			return;
+		}
+		
+		MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter", MemberInfoPrinter.class);
+		infoPrinter.printMemberInfo(args[1]);
+		
 	}
 
 	private static Assembler assembler = new Assembler();
