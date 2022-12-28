@@ -9,6 +9,7 @@ import spring.MemberInfoPrinter;
 import spring.MemberListPrinter;
 import spring.MemberPrinter;
 import spring.MemberRequestSevice;
+import spring.VersionPrinter;
 
 @Configuration  //스프링 설정 클래스를 의미
 public class AppCtx {
@@ -48,6 +49,12 @@ public class AppCtx {
 		infoPrinter.setMemberPrinter(memberPrinter());
 		infoPrinter.setMemberDao(memberDao());
 		return infoPrinter;
+	}
+	@Bean VersionPrinter versionPrinter() {
+		VersionPrinter versionPrinter = new VersionPrinter();
+		versionPrinter.setMajorVersion(5);
+		versionPrinter.setMinorVersion(1);
+		return versionPrinter;
 	}
 	
 	
